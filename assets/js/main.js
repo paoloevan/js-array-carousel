@@ -15,16 +15,17 @@ const carouselImg = [
     './assets/img/02.webp',
     './assets/img/03.webp',
     './assets/img/04.webp'
-]
+];
 
 // seleziono dove voglio le immagini nella DOM
-const slidesEl = document.querySelector('.slides')
+const slidesEl = document.querySelector('.slides');
 
+//let activeImg = carouselImg[0];
 for (let i = 0; i < carouselImg.length; i++) {
     //selezione l'url dell'immagine corrente
     //const slidesElUrl = carouselImg[i];
     //creo il markup da inserire
-    const slidesElMark = `<img  height=300 src="${carouselImg[i]}" alt="">`
+    const slidesElMark = `<img class="${i == 0 ? 'active' : ''}" height=300 src="${carouselImg[i]}" alt="">`;
     //inserisco img nella dom
-    slidesEl.insertAdjacentHTML(`beforeend`, slidesElMark)
+    slidesEl.insertAdjacentHTML(`beforeend`, slidesElMark);
 }
