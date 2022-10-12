@@ -23,3 +23,10 @@ img {
 .active {
     display: block;
 }
+.buttons {
+    width: 300px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
