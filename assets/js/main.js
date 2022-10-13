@@ -18,4 +18,21 @@ che quindi verrà visualizzata al posto della precedente.
 */
 
 
+//creo array con le immagini
+const imagesArray = [
+    './assets/img/01.webp',
+    './assets/img/02.webp',
+    './assets/img/03.webp',
+    './assets/img/04.webp',
+    './assets/img/05.webp'
+];
+console.log(imagesArray.length);
 
+//selezione l'elmento della DOM
+const sliderEl = document.querySelector('.slider')
+
+//inserisco immagini nell'elemento
+for (let i = 0; i < imagesArray.length; i++) {
+    sliderEl.insertAdjacentHTML('beforeend', `<img class="${i === 0 ? 'active' : ''}" src="${imagesArray[i]}" alt="">`)
+    
+}
