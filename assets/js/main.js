@@ -26,13 +26,58 @@ const imagesArray = [
     './assets/img/04.webp',
     './assets/img/05.webp'
 ];
-console.log(imagesArray.length);
 
-//selezione l'elmento della DOM
-const sliderEl = document.querySelector('.slider')
+//selezione elmenti della DOM
+const sliderEl = document.querySelector('.slider');
+const prevEl = document.querySelector('.prev');
+const nextEl = document.querySelector('.next');
+
+
+let urlImg
+let activeImg = 0;
 
 //inserisco immagini nell'elemento
 for (let i = 0; i < imagesArray.length; i++) {
-    sliderEl.insertAdjacentHTML('beforeend', `<img class="${i === 0 ? 'active' : ''}" src="${imagesArray[i]}" alt="">`)
-    
+    urlImg = imagesArray[i];
+    sliderEl.insertAdjacentHTML('beforeend', `<img class="img_fluid ${i == activeImg ? 'active' : ''}" src="${urlImg}" alt="">`)
 }
+
+
+//al click devo togliere la classe active dall'immagine corrente
+//e assegnarlo alla successiva
+
+const nextImg = document.querySelectorAll('.img_fluid')
+
+nextEl.addEventListener('click', function () {
+    //seleziono l'immagine attiva
+    const currentImg = document.querySelector('.active');
+    //tolgo la classe active
+    currentImg.classList.remove('active')
+    //incremento activeImg
+    activeImg++
+    //seleziono tutte le immagini
+    const allSlides = document.getElementsByClassName('img_fluid');
+    //seleziono la prossima immagine
+    const nextSlide = allSlides[activeImg];
+    // aggiungo alla slide successiva la classe active
+    nextSlide.classList.add('active');
+
+})
+
+prevEl.addEventListener('click', function () {
+    //seleziono l'immagine attiva
+    const currentImg = document.querySelector('.active');
+    //tolgo la classe active
+    currentImg.classList.remove('active')
+    //incremento activeImg
+    activeImg--
+    //seleziono tutte le immagini
+    const allSlides = document.getElementsByClassName('img_fluid');
+    //seleziono la prossima immagine
+    const nextSlide = allSlides[activeImg];
+    // aggiungo alla slide successiva la classe active
+    nextSlide.classList.add('active');
+
+})
+
+
